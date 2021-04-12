@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class Test_ContactScreen extends Test_Base{
 
     public static final StartScreen startScreen = open("/", StartScreen.class);
-    public static final ContactScreen contactScreen = startScreen.openContactScreen();;
+    public static final ContactScreen contactScreen = startScreen.clickContact();
 
     @Test
     public void checkContactScreenIsOpen(){

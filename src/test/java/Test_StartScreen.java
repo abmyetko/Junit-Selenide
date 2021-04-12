@@ -3,7 +3,6 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 
-/* https://selenide.org/javadoc/current/com/codeborne/selenide/Configuration.html */
 
 public class Test_StartScreen extends Test_Base{
 

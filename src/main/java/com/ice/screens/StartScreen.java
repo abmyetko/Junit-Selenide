@@ -38,7 +38,7 @@ public class StartScreen{
     public SelenideElement Contact;
 
 
-    public ContactScreen openContactScreen(){
+    public ContactScreen clickContact(){
         Contact.click();
         return page(ContactScreen.class);
     }
