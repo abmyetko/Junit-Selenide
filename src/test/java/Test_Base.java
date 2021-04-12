@@ -9,5 +9,6 @@ public class Test_Base {
     static void setUp(){
         closeWebDriver();
         Configuration.baseUrl = "https://www.theice.com";
+        Configuration.startMaximized = true;
     }
 }
