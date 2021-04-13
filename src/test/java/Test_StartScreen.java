@@ -45,11 +45,14 @@ public class Test_StartScreen extends Test_Base{
     @Test
     @Order(5)
     public void checkToolSetLabels(){
+        String[] toolset = {"Product Specs","Hours","Holiday Hours","Expiry Calendar","Fees","Margins",
+                "Subscriptions","System Alerts","ICE Education"};
         startScreen.toolset_label.forEach((x) -> {
             x.hover();
-            x.should(be(visible));
+            x.should(be(visible));//how can I check is element hovered or not?
+            int index = startScreen.toolset_label.indexOf(x);
+            assertEquals(toolset[index],x.getOwnText());
         });
-        assertEquals(9,startScreen.toolset_label.size());
     }
 
     @Test
