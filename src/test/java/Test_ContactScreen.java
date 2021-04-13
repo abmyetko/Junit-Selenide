@@ -1,7 +1,8 @@
 import com.ice.screens.ContactScreen;
 import com.ice.screens.StartScreen;
 import org.junit.jupiter.api.Test;
-import static com.codeborne.selenide.Condition.visible;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.open;
 
 
@@ -11,8 +12,7 @@ public class Test_ContactScreen extends Test_Base{
 
     @Test
     public void checkContactScreenIsOpen(){
-        contactScreen.Personalized_Support.shouldBe(visible);
-        contactScreen.Help_Desk_for_Trading_and_Clearing.scrollTo().hover();
+        contactScreen.Personalized_Support.should(be(visible));
     }
 
     @Test
