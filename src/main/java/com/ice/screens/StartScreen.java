@@ -2,9 +2,7 @@ package com.ice.screens;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.List;
-
 import static com.codeborne.selenide.Selenide.page;
 
 
