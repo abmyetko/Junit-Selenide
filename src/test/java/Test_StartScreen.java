@@ -27,7 +27,7 @@ public class Test_StartScreen extends Test_Base{
     @Test
     @Order(2)//How can I make dependency between test methods? For example, I'd like to divide test logic into some methods,
     // if the 1st test fails, the 2nd test will not be skipped(but it has no sense).
-    // I need to combine all test steps into one test method with Junit5?
+    //Do I need to combine all test steps into one test method with Junit5?
     public void checkSolutionsIsOpen(){
         startScreen.Solutions.click();
         startScreen.Featured_Services.should(be(visible));
@@ -63,6 +63,13 @@ public class Test_StartScreen extends Test_Base{
 
     @Test
     @Order(6)
+    public void checkToolBarIsCollapsedAfterScroll(){
+        startScreen.spacer.get(0).scrollTo();
+        startScreen.toolset_label.get(0).should(be(hidden));//?
+    }
+
+    @Test
+    @Order(7)
     public void checkContactsIsOpen(){
         startScreen.Contact.click();
     }

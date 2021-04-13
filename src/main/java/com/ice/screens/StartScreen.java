@@ -41,6 +41,8 @@ public class StartScreen{
     @FindBy(css = "div.floating-toolset__label")
     public List<SelenideElement> toolset_label;
 
+    @FindBy(css = "div.spacer-md")
+    public List<SelenideElement> spacer;
 
     public ContactScreen clickContact(){
         Contact.click();
