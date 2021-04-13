@@ -1,9 +1,13 @@
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import com.ice.screens.StartScreen;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+
+import java.util.List;
+
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,7 +26,7 @@ public class Test_StartScreen extends Test_Base{
     }
 
     @Test
-    @Order(2)
+    @Order(2)//How can I make dependency between test methods? For example, the 1st test fails, the 2nd test(is it skipped or not)???
     public void checkSolutionsIsOpen(){
         startScreen.Solutions.click();
         startScreen.Featured_Services.should(be(visible));
@@ -44,13 +48,14 @@ public class Test_StartScreen extends Test_Base{
 
     @Test
     @Order(5)
-    public void checkToolSetLabels(){
+    public void checkNamesOfToolSetLabels(){
         String[] toolset = {"Product Specs","Hours","Holiday Hours","Expiry Calendar","Fees","Margins",
                 "Subscriptions","System Alerts","ICE Education"};
-        startScreen.toolset_label.forEach((x) -> {
+        List<SelenideElement> list = startScreen.toolset_label;
+        list.forEach(x -> {
             x.hover();
-            x.should(be(visible));//how can I check is element hovered or not?
-            int index = startScreen.toolset_label.indexOf(x);
+            x.should(be(visible));//How can I check is element hovered or not?
+            int index = list.indexOf(x);
             assertEquals(toolset[index],x.getOwnText());
         });
     }
