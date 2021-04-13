@@ -2,6 +2,7 @@ package com.ice.screens;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
+import java.util.List;
 import static com.codeborne.selenide.Selenide.page;
 
 
@@ -37,6 +38,11 @@ public class StartScreen{
     @FindBy(xpath = "//a[text()='Contact']")
     public SelenideElement Contact;
 
+    @FindBy(css = "div.floating-toolset__label")
+    public List<SelenideElement> toolset_label;
+
+    @FindBy(css = "div.spacer-md")
+    public List<SelenideElement> spacer;
 
     public ContactScreen clickContact(){
         Contact.click();
