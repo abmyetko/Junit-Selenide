@@ -1,4 +1,3 @@
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.ice.screens.StartScreen;
 import org.junit.jupiter.api.MethodOrderer;
