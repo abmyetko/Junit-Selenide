@@ -11,6 +11,9 @@ public class StartScreen{
     @FindBy(css = "a.logo-ice")
     public SelenideElement logo_ice;
 
+    @FindBy(css = "div > input[type=search]")
+    public SelenideElement search;
+
     @FindBy(xpath = "//a[text()='Learn more about ICE']")
     public SelenideElement Learn_more_about_ICE;
 

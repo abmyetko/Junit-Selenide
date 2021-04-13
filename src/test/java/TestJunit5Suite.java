@@ -4,5 +4,5 @@ import org.junit.runner.RunWith;
 
 @RunWith(JUnitPlatform.class)
 @SelectClasses({Test_StartScreen.class, Test_ContactScreen.class})
-class JUnit5TestSuite {
+class TestJUnit5Suite {
 }

@@ -1,13 +1,11 @@
 import com.codeborne.selenide.SelenideElement;
 import com.ice.screens.StartScreen;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import java.util.List;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -23,9 +21,10 @@ public class Test_StartScreen extends Test_Base{
     }
 
     @Test
-    @Order(2)//How can I make dependency between test methods? For example, I'd like to divide test logic into some methods,
-    // if the 1st test fails, the 2nd test will not be skipped(but it has no sense).
-    //Do I need to combine all test steps into one test method with Junit5?
+    @Order(2)
+    /* Т.к. отсутствует зависимость между методами, то если разделять тестовую логику максимально атомарно,
+     * при падении первого теста, последующие не будут скипнуты, а продолжат выполняться,
+     * из за чего необходимо все шаги и тестовую логику определять в один тестовый метод. */
     public void checkSolutionsIsOpen(){
         startScreen.Solutions.click();
         startScreen.Featured_Services.should(be(visible));
@@ -53,10 +52,19 @@ public class Test_StartScreen extends Test_Base{
         List<SelenideElement> list = startScreen.toolset_label;
         list.forEach(x -> {
             x.hover();
-            x.should(be(visible));//How can I check is element hovered or not?
+            x.should(be(visible)); /* как в selenide проверить, что элемент is hovered? */
             int index = list.indexOf(x);
-            assertEquals(toolset[index],x.getOwnText());
+            Assertions.assertEquals(toolset[index],x.getOwnText());
         });
+    }
+
+    @ParameterizedTest
+    @Order(7)
+    @ValueSource(strings = {"Product Specs","Hours","Holiday Hours","Expiry Calendar","Fees","Margins",
+            "Subscriptions","System Alerts","ICE Education"})
+    public void compareTextValue(String element) {
+        startScreen.search.setValue(element);
+
     }
 
     @Test
@@ -67,7 +75,7 @@ public class Test_StartScreen extends Test_Base{
     }
 
     @Test
-    @Order(7)
+    @Order(8)
     public void checkContactsIsOpen(){
         startScreen.Contact.click();
     }
