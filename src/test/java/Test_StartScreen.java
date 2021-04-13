@@ -65,7 +65,7 @@ public class Test_StartScreen extends Test_Base{
     @Order(6)
     public void checkToolBarIsCollapsedAfterScroll(){
         startScreen.spacer.get(0).scrollTo();
-        startScreen.toolset_label.get(0).should(be(hidden));//?
+        startScreen.toolset_label.get(0).should(be(disappear));
     }
 
     @Test
