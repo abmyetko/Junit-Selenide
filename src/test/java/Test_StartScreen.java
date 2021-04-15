@@ -22,9 +22,6 @@ public class Test_StartScreen extends Test_Base{
 
     @Test
     @Order(2)
-    /* Т.к. отсутствует зависимость между методами, то если разделять тестовую логику максимально атомарно,
-     * при падении первого теста, последующие не будут скипнуты, а продолжат выполняться,
-     * из за чего необходимо все шаги и тестовую логику определять в один тестовый метод. */
     public void checkSolutionsIsOpen(){
         startScreen.Solutions.click();
         startScreen.Featured_Services.should(be(visible));
@@ -52,7 +49,7 @@ public class Test_StartScreen extends Test_Base{
         List<SelenideElement> list = startScreen.toolset_label;
         list.forEach(x -> {
             x.hover();
-            x.should(be(visible)); /* как в selenide проверить, что элемент is hovered? */
+            x.should(be(visible));
             int index = list.indexOf(x);
             Assertions.assertEquals(toolset[index],x.getOwnText());
         });
@@ -60,11 +57,9 @@ public class Test_StartScreen extends Test_Base{
 
     @ParameterizedTest
     @Order(7)
-    @ValueSource(strings = {"Product Specs","Hours","Holiday Hours","Expiry Calendar","Fees","Margins",
-            "Subscriptions","System Alerts","ICE Education"})
+    @ValueSource(strings = {"q","w","e","r"})
     public void compareTextValue(String element) {
         startScreen.search.setValue(element);
-
     }
 
     @Test
