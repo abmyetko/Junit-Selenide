@@ -1,4 +1,5 @@
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.*;
@@ -7,9 +8,10 @@ import static com.codeborne.selenide.Selenide.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AusAnalyzerDemoTest {
 
-    public By el1 = By.cssSelector("div#u11571.ax_default");
+    public By itemToBeHovered = By.cssSelector("div#u11571.ax_default");
     public By el2 = By.cssSelector("div#u11571_state1.panel_state");
     public By dot = By.cssSelector("div#u11583_state0.panel_state");
+    public By itemToBeHovered2 = By.cssSelector("div[id*='u114'][data-label*='DU'][class='ax_default']");
 
     @BeforeAll
     static void setUp(){
@@ -19,9 +21,15 @@ public class AusAnalyzerDemoTest {
     }
 
     @Test
+    public void makeItemsHovered(){
+        switchTo().innerFrame("mainFrame");
+        $$(itemToBeHovered2).forEach(SelenideElement::hover);
+    }
+
+    @Test
     public void checkItemHasReadStatus(){
         switchTo().innerFrame("mainFrame");
-        $(el1).hover();
+        $(itemToBeHovered).hover();
         Assertions.assertEquals("Read",$(dot).getAttribute("data-label"));
         Assertions.assertEquals("visibility: inherit;",$(el2).getAttribute("style"));
     }
