@@ -11,6 +11,8 @@ public class AusAnalyzerDemoTest {
     public By itemToBeHovered = By.cssSelector("div#u11571.ax_default");
     public By el2 = By.cssSelector("div#u11571_state1.panel_state");
     public By dot = By.cssSelector("div#u11583_state0.panel_state");
+
+    //<div id="u11405" class="ax_default" data-label="DU4">
     public By itemToBeHovered2 = By.cssSelector("div[id*='u114'][data-label*='DU'][class='ax_default']");
 
     @BeforeAll
